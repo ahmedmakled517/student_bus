@@ -1,0 +1,62 @@
+@extends('layout_dashboard.app')
+
+@section('content')
+
+    <div class="content-wrapper">
+
+        <section class="content-header">
+
+            <h1>unites</h1>
+
+            <ol class="breadcrumb">
+                <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> dashboard</a></li>
+                <li><a href="{{ route('dashboard.unites.index') }}"> unites</a></li>
+                <li class="active">add </li>
+            </ol>
+        </section>
+
+        <section class="content">
+
+            <div class="box box-primary">
+
+                <div class="box-header">
+                    <h3 class="box-title">add unite</h3>
+                </div><!-- end of box header -->
+
+                <div class="box-body">
+
+                    @include('partials._errors')
+
+                    <form action="{{ route('dashboard.unites.store') }}" method="post" enctype="multipart/form-data">
+
+                        {{ csrf_field() }}
+                        {{ method_field('post') }}
+
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" required name="name" class="form-control" value="{{ old('name') }}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Type:- </label>
+                            <select name="type" required style="width:200px" >
+                                <option value="0">main</option>
+                                <option value="1">sup</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> add</button>
+                        </div>
+
+                    </form><!-- end of form -->
+
+                </div><!-- end of box body -->
+
+            </div><!-- end of box -->
+
+        </section><!-- end of content -->
+
+    </div><!-- end of content wrapper -->
+
+@endsection
